@@ -11,9 +11,10 @@
     },
     "rules": {
         "indent": ["error", 4],
-        "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
-        "no-unused-vars": "off"
+        "linebreak-style": "off",
+        "no-unused-vars": "off",
+        "no-console": "off"
     }
 }
