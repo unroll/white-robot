@@ -1,0 +1,18 @@
+{
+  "name": "white-robot",
+  "version": "1.0.0",
+  "description": "wechat robot",
+  "main": "index.js",
+  "repository": "https://github.com/unroll/white-robot.git",
+  "author": "Lin Jinxing",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/**"
+  },
+  "dependencies": {
+    "eslint": "^5.5.0",
+    "fetch-cookie": "^0.7.2",
+    "koa": "^2.5.2",
+    "node-fetch": "^2.2.0"
+  }
+}
