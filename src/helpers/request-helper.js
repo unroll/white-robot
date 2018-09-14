@@ -11,7 +11,6 @@ class RequestHelper {
         const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36';
         this.defaultGetOpts = {
             method: 'GET',
-            credentials: 'includes',
             headers: {
                 'User-Agent': userAgent
             }
@@ -19,7 +18,6 @@ class RequestHelper {
 
         this.defaultPostOpts = {
             method: 'POST',
-            credentials: 'includes',
             headers: {
                 'User-Agent': userAgent
             }

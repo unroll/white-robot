@@ -21,7 +21,7 @@ class WeChatHelper {
     get code() {
         const timestamp = Date.now();
         return this.uuid
-            .then(uuid => `https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid=${uuid}&tip=0&r=${timestamp/1524}&_=${timestamp}`)
+            .then(uuid => `https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid=${uuid}&tip=0&r=${~timestamp}&_=${timestamp}`)
             .then(uri => this.requester.get(uri))
             .then(response => response.text())
             .then(text => codeInfoText2Object(text));
@@ -51,7 +51,7 @@ function codeInfoText2Object(text) {
 async function test() {
     const wechat = new WeChatHelper();
 
-    wechat.requester.get('https://wx.qq.com/')
+    await wechat.requester.get('https://wx.qq.com/')
     console.log(await wechat.qrcode);
 
     let code = await wechat.code;
@@ -60,24 +60,13 @@ async function test() {
         code = await wechat.code;
     }
     console.log(code.redirect_uri)
-    console.log(wechat.requester.cookies.toJSON());
-    const response = await wechat.requester.get(code.redirect_uri, {}, {
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Accept-Language": "zh-CN,zh;q=0.9",
-        "Connection": "keep-alive",
-        "Upgrade-Insecure-Requests": 1,
-        "Host": "wx2.qq.com",
-        "Referer": "https://wx.qq.com/"
-    });
-    console.log(wechat.requester.cookies.toJSON());
+    await (await wechat.requester.get(code.redirect_uri)).text();
+    const response = await wechat.requester.get(code.redirect_uri + "&fun=new&version=v2");
     const text = await response.text();
-    console.log(text);
+    console.log(text)
 }
 
-// test();
-
-// TODO: node-fetch 怀疑fetch没有正确的处理cookie
+test();
 
 async function test1() {
     const wechat = new WeChatHelper();
@@ -85,6 +74,17 @@ async function test1() {
     console.log(wechat.requester.cookies.toJSON());
 }
 
-test1()
+// test1()
+
+async function test2() {
+    const wechat = new WeChatHelper();
+    const response1 = await wechat.requester.get('http://localhost:3000')
+    const response2 = await wechat.requester.get('http://localhost:3000')
+    console.log(await response1.text())
+    console.log(await response2.text())
+    // console.log(wechat.requester.cookies.toJSON());
+}
+
+// test2()
 
 module.exports = WeChatHelper;
