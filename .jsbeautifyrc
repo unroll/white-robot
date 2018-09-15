@@ -1,5 +1,6 @@
 {
     "brace_style": "collapse,preserve-inline",
+    "e4x": true,
     "eol": "\n",
     "indent_size": 4
 }

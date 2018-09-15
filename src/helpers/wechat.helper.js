@@ -6,7 +6,7 @@ class WeChatHelper {
 
     constructor() {
         this.requester = new RequestHelper();
-        this.device = ("e" + Date.now().toString()).padEnd(15, '463782').slice(0, 16)
+        this.device = ('e' + Date.now().toString()).padEnd(15, '463782').slice(0, 16);
     }
 
     get uuid() {
@@ -26,7 +26,7 @@ class WeChatHelper {
             .then(uuid => `https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid=${uuid}&tip=0&r=${~timestamp}&_=${timestamp}`)
             .then(uri => this.requester.get(uri))
             .then(response => response.text())
-            .then(text => text2object(text))
+            .then(text => text2object(text));
     }
 
     get qrcode() {
@@ -36,34 +36,34 @@ class WeChatHelper {
 
     get redirect() {
         return new Promise((resolve, reject) => {
-            const start = Date.now()
+            const start = Date.now();
             const loop = () => this.code
                 .then(obj => {
                     if (obj.code === 200) {
-                        return resolve(`${obj.redirect_uri}&fun=new&version=v2`)
+                        return resolve(`${obj.redirect_uri}&fun=new&version=v2`);
                     } else if (Date.now() - start > 15 * 60 * 1000) {
-                        return reject(new Error('timeout'))
+                        return reject(new Error('timeout'));
                     }
-                    loop()
-                })
-            loop()
-        })
+                    loop();
+                });
+            loop();
+        });
     }
 
     get ticket() {
         return this.redirect
             .then(uri => this.requester.get(uri))
             .then(response => response.text())
-            .then(xml => xml2obj(xml))
+            .then(xml => xml2obj(xml));
     }
 
     init() {
         return this.ticket
             .then(ticket => {
-                const content = { "BaseRequest": { "Uin": ticket.wxuin, "Sid": ticket.wxsid, "Skey": ticket.skey, "DeviceID": this.device } }
-                return this.requester.post(`https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxinit?r=${~Date.now()}`, content)
+                const content = { 'BaseRequest': { 'Uin': ticket.wxuin, 'Sid': ticket.wxsid, 'Skey': ticket.skey, 'DeviceID': this.device } };
+                return this.requester.post(`https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxinit?r=${~Date.now()}`, content);
             })
-            .then(response => response.json())
+            .then(response => response.json());
     }
 
     invalid() {
@@ -74,10 +74,10 @@ class WeChatHelper {
 function xml2obj(xml) {
     return new Promise((resolve, reject) => {
         parseString(xml, (err, result) => {
-            if (err) return reject(err)
-            return resolve(result)
-        })
-    })
+            if (err) return reject(err);
+            return resolve(result);
+        });
+    });
 }
 
 function text2object(text) {
