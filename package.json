@@ -7,7 +7,7 @@
   "author": "Lin Jinxing",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node index.js",
     "lint": "eslint src/**"
   },
   "dependencies": {
