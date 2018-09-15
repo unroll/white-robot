@@ -1,21 +1,38 @@
 {
-  "name": "white-robot",
-  "version": "1.0.0",
-  "description": "wechat robot",
-  "main": "index.js",
-  "repository": "https://github.com/unroll/white-robot.git",
-  "author": "Lin Jinxing",
-  "license": "MIT",
-  "scripts": {
-    "start": "node src/index.js",
-    "lint": "eslint src/**"
-  },
-  "dependencies": {
-    "eslint": "^5.5.0",
-    "fetch-cookie": "^0.7.2",
-    "koa": "^2.5.2",
-    "node-fetch": "^2.2.0",
-    "tough-cookie": "^2.4.3",
-    "xml2js": "^0.4.19"
-  }
+    "name": "white-robot",
+    "version": "1.0.0",
+    "description": "wechat robot",
+    "main": "index.js",
+    "repository": "https://github.com/unroll/white-robot.git",
+    "author": "Lin Jinxing",
+    "license": "MIT",
+    "scripts": {
+        "start": "node src/index.js",
+        "build": "webpack",
+        "dev": "webpack-dev-server",
+        "lint": "eslint app/*.js src/*.js"
+    },
+    "dependencies": {
+        "fetch-cookie": "^0.7.2",
+        "koa": "^2.5.2",
+        "node-fetch": "^2.2.0",
+        "react": "^16.5.1",
+        "react-dom": "^16.5.1",
+        "tough-cookie": "^2.4.3",
+        "xml2js": "^0.4.19"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.1",
+        "@babel/preset-env": "^7.0.0",
+        "@babel/preset-react": "^7.0.0",
+        "babel-eslint": "^9.0.0",
+        "babel-loader": "^8.0.2",
+        "eslint": "^5.6.0",
+        "eslint-loader": "^2.1.0",
+        "eslint-plugin-react": "^7.11.1",
+        "html-webpack-plugin": "^3.2.0",
+        "webpack": "^4.19.0",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.8"
+    }
 }

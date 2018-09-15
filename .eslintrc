@@ -1,8 +1,10 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "browser": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -16,5 +18,8 @@
         "linebreak-style": "off",
         "no-unused-vars": "off",
         "no-console": "off"
-    }
+    },
+    "plugins": [
+        "react"
+    ]
 }
