@@ -19,7 +19,8 @@ class RequestHelper {
         this.defaultPostOpts = {
             method: 'POST',
             headers: {
-                'User-Agent': userAgent
+                'User-Agent': userAgent,
+                'Content-Type': 'application/json'
             }
         };
     }
@@ -28,7 +29,7 @@ class RequestHelper {
         const curOpts = {
             ...this.defaultPostOpts,
             ...opts,
-            body: object2Query(body),
+            body: JSON.stringify(body),
             headers: {
                 ...this.defaultPostOpts.headers,
                 ...headers
@@ -39,7 +40,7 @@ class RequestHelper {
     }
 
     async get(url, body = {}, headers = {}, opts = {}) {
-        const query = object2Query(body);
+        const query = object2query(body);
         const curOpts = {
             ...this.defaultGetOpts,
             ...opts,
@@ -57,7 +58,7 @@ class RequestHelper {
     }
 }
 
-function object2Query(obj) {
+function object2query(obj) {
     let query = '';
     for (const key in obj) {
         const value = obj[key];
