@@ -8,9 +8,9 @@
     "license": "MIT",
     "scripts": {
         "start": "node src/index.js",
-        "build": "webpack",
-        "dev": "webpack-dev-server",
-        "lint": "eslint app/*.js src/*.js"
+        "lint": "eslint app/*.js src/*.js",
+        "build:client": "webpack",
+        "dev:client": "webpack-dev-server"
     },
     "dependencies": {
         "fetch-cookie": "^0.7.2",
@@ -29,6 +29,7 @@
         "autoprefixer": "^9.1.5",
         "babel-eslint": "^9.0.0",
         "babel-loader": "^8.0.2",
+        "babel-plugin-react-require": "^3.0.0",
         "clean-webpack-plugin": "^0.1.19",
         "css-loader": "^1.0.0",
         "eslint": "^5.6.0",
@@ -37,6 +38,7 @@
         "html-webpack-plugin": "^3.2.0",
         "mini-css-extract-plugin": "^0.4.2",
         "postcss-loader": "^3.0.0",
+        "react-hot-loader": "^4.3.8",
         "style-loader": "^0.23.0",
         "url-loader": "^1.1.1",
         "webpack": "^4.19.0",

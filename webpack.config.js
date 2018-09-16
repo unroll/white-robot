@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const development = false;
+const development = true;
 module.exports = {
     mode: development ? 'development' : 'production',
     entry: {
@@ -60,6 +60,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[hash].css'
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(path.join(__dirname, 'dist'))
     ],
     devServer: {
@@ -67,6 +68,7 @@ module.exports = {
         host: 'localhost',
         port: 3000,
         inline: true,
+        hot: true,
         overlay: {
             errors: true
         },
