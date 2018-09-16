@@ -8,7 +8,7 @@
     "license": "MIT",
     "scripts": {
         "start": "node src/index.js",
-        "lint": "eslint app/*.js src/*.js",
+        "lint": "eslint app/*.js src/*.js *.js",
         "build:client": "webpack",
         "dev:client": "webpack-dev-server"
     },
