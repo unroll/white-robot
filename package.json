@@ -7,8 +7,9 @@
     "author": "Lin Jinxing",
     "license": "MIT",
     "scripts": {
-        "start": "node src/index.js",
+        "start": "npm run build:client && npm run server",
         "lint": "eslint app/*.js src/*.js *.js",
+        "server": "node src/application.js",
         "build:client": "webpack",
         "dev:client": "webpack-dev-server"
     },
@@ -16,6 +17,8 @@
         "fetch-cookie": "^0.7.2",
         "file-loader": "^2.0.0",
         "koa": "^2.5.2",
+        "koa-static": "^5.0.0",
+        "koa-views": "^6.1.4",
         "node-fetch": "^2.2.0",
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
