@@ -1,11 +1,11 @@
 const { parseString } = require('xml2js');
-const RequestHelper = require('./request.helper');
+const RequestHelper = require('./request.util');
 
 
-class WeChatHelper {
+class WeChatUtil {
 
     constructor() {
-        this.requester = new RequestHelper();
+        this.requester = new RequestUtil();
         this.device = ('e' + Date.now().toString()).padEnd(15, '463782').slice(0, 16);
     }
 
@@ -91,4 +91,4 @@ function text2object(text) {
     return result;
 }
 
-module.exports = WeChatHelper;
+module.exports = WeChatUtil;

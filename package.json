@@ -17,6 +17,7 @@
         "fetch-cookie": "^0.7.2",
         "file-loader": "^2.0.0",
         "koa": "^2.5.2",
+        "koa-router": "^7.4.0",
         "koa-static": "^5.0.0",
         "koa-views": "^6.1.4",
         "node-fetch": "^2.2.0",

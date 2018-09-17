@@ -2,7 +2,7 @@ const nodeFetch = require('node-fetch');
 const createFetch = require('fetch-cookie');
 const tough = require('tough-cookie');
 
-class RequestHelper {
+class RequestUtil {
 
     constructor() {
         this.cookies = new tough.CookieJar();
@@ -68,4 +68,4 @@ function object2query(obj) {
     return query;
 }
 
-module.exports = RequestHelper;
+module.exports = RequestUtil;
